@@ -31,15 +31,13 @@ document.body.appendChild( renderer.domElement );
 const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );*/
-(function loadImgTexture(){
-    var loader = new THREE.TextureLoader();
-    loader.load("textures/double_plant_grass_top.png",function(texture){
-        var geometry = new THREE.BoxGeometry();
-        var material = new THREE.MeshBasicMaterial({color:0x739783,map:texture});
-        mesh = new THREE.Mesh(geometry,material);
-        scene.add(mesh);
-    })
-})()
+var loader = new THREE.TextureLoader();
+loader.load("textures/grass_side.png",function(texture){
+    var geometry = new THREE.BoxGeometry();
+    var material = new THREE.MeshBasicMaterial({color:0x739783,map:texture});
+    mesh = new THREE.Mesh(geometry,material);
+    scene.add(mesh);
+});
 camera.position.z = 5;
 const tiles=[[[]]];
 function move(k,x,y,z){
