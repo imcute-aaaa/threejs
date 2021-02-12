@@ -41,7 +41,7 @@ scene.add( cube );*/
     })
 })()
 camera.position.z = 5;
-
+const tiles=[[[]]];
 function move(k,x,y,z){
 	return addEventListener("keydown",(e)=>{
 		let c=Math.cos,s=Math.sin,Y=camera.rotation.x,P=camera.rotation.y;
