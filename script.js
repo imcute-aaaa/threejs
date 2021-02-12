@@ -49,7 +49,7 @@ function blockTex(t){
 		/*texture.generateMipmaps = false;
 		texture.magFilter = THREE.NearestFilter;
 		texture.minFilter = THREE.NearestFilter;*/
-            	return new THREE.MeshLambertMaterial({map: texture, fog: false});});
+        	return new THREE.MeshBasicMaterial({map: texture});});
 }
 scene.add(new THREE.Mesh(new THREE.BoxGeometry(64,64,64),blockTex("grass")));
 camera.position.z = 70;
