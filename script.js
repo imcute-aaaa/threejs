@@ -46,9 +46,7 @@ function blockTex(t){
 	}
 	return new THREE.CubeTextureLoader().load(a.map((e)=>{return "textures/"+e}));
 }
-let mat=new THREE.MeshBasicMaterial({envMap:blockTex("grass")});
-mat.side = THREE.DoubleSide;
-scene.add(new THREE.Mesh(new THREE.BoxGeometry(),mat));
+scene.add(new THREE.Mesh(new THREE.BoxGeometry(),new THREE.MeshBasicMaterial({envMap:blockTex("grass")})));
 camera.position.z = 5;
 const tiles=[[[]]];
 function move(k,x,y,z){
