@@ -46,9 +46,9 @@ function blockTex(t){
 	}
 	return a.map((e)=>{
 		let texture=new THREE.TextureLoader().load("textures/"+e);
-		texture.generateMipmaps = false;
+		/*texture.generateMipmaps = false;
 		texture.magFilter = THREE.NearestFilter;
-		texture.minFilter = THREE.NearestFilter;
+		texture.minFilter = THREE.NearestFilter;*/
             	return new THREE.MeshLambertMaterial({map: texture, fog: false});});
 }
 scene.add(new THREE.Mesh(new THREE.BoxGeometry(64,64,64),blockTex("grass")));
