@@ -25,7 +25,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 camera.rotation.order = 'YXZ';
 const renderer = new THREE.WebGLRenderer();
-renderer.setFaceCulling(THREE.CullFaceFront, THREE.FrontFaceDirectionCCW);
+renderer.setFaceCulling(THREE.CullFaceNone);
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 function blockTex(t){
