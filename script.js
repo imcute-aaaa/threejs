@@ -44,9 +44,14 @@ function blockTex(t){
 			a=[BTEX[t][1][2]+".png",BTEX[t][1][3]+".png",BTEX[t][1][0]+".png",BTEX[t][1][1]+".png",BTEX[t][1][4]+".png",BTEX[t][1][5]+".png"];
 			break;
 	}
-	return new THREE.CubeTextureLoader().load(a.map((e)=>{return "textures/"+e}));
+	return a.map((e)=>{
+		let texture=new THREE.TextureLoader().load("textures/"+e);
+		texture.generateMipmaps = false;
+		texture.magFilter = THREE.NearestFilter;
+		texture.minFilter = THREE.NearestFilter;
+            	return new THREE.MeshLambertMaterial({map: texture, fog: false});});
 }
-scene.add(new THREE.Mesh(new THREE.BoxGeometry(64,64,64),new THREE.MeshBasicMaterial({color:"#FFFFFF",map:blockTex("grass")})));
+scene.add(new THREE.Mesh(new THREE.BoxGeometry(64,64,64),blockTex("grass")));
 camera.position.z = 70;
 const tiles=[[[]]];
 function move(k,x,y,z){
