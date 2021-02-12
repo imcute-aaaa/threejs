@@ -27,17 +27,26 @@ camera.rotation.order = 'YXZ';
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
-/*const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );*/
-var loader = new THREE.TextureLoader();
-loader.load("textures/grass_side.png",function(texture){
-    var geometry = new THREE.BoxGeometry();
-    var material = new THREE.MeshBasicMaterial({color:0x739783,map:texture});
-    mesh = new THREE.Mesh(geometry,material);
-    scene.add(mesh);
-});
+function blockTex(t){
+	if(!BTEX[t]){return alert("A block's type is not defined.Having an error with your level?Wrong block:"+t)}
+	let a;
+	switch(BTEX[t][0]){
+		case 0:
+			a=[BTEX[t][1][0]+".png",BTEX[t][1][0]+".png",BTEX[t][1][0]+".png",BTEX[t][1][0]+".png",BTEX[t][1][0]+".png",BTEX[t][1][0]+".png"];
+			break;
+		case 1:
+			a=[BTEX[t][1][2]+".png",BTEX[t][1][2]+".png",BTEX[t][1][0]+".png",BTEX[t][1][1]+".png",BTEX[t][1][2]+".png",BTEX[t][1][2]+".png"];
+			break;
+		case 2:
+			a=[BTEX[t][1][2]+".png",BTEX[t][1][2]+".png",BTEX[t][1][0]+".png",BTEX[t][1][1]+".png",BTEX[t][1][3]+".png",BTEX[t][1][3]+".png"];
+			break;
+		case 3:
+			a=[BTEX[t][1][2]+".png",BTEX[t][1][3]+".png",BTEX[t][1][0]+".png",BTEX[t][1][1]+".png",BTEX[t][1][4]+".png",BTEX[t][1][5]+".png"];
+			break;
+	}
+	return new THREE.CubeTextureLoader().setPath("textures/").load(a);
+}
+scene.add(new THREE.Mesh(new THREE.BoxGeometry(),new THREE.MeshBasicMaterial({color:0x739783,map:blockTex("grass")})));
 camera.position.z = 5;
 const tiles=[[[]]];
 function move(k,x,y,z){
