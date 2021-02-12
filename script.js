@@ -44,14 +44,14 @@ function blockTex(t){
 			a=[BTEX[t][1][2]+".png",BTEX[t][1][3]+".png",BTEX[t][1][0]+".png",BTEX[t][1][1]+".png",BTEX[t][1][4]+".png",BTEX[t][1][5]+".png"];
 			break;
 	}
-	return a.map((e)=>{
-		let texture=new THREE.TextureLoader().load("textures/"+e);
-		/*texture.generateMipmaps = false;
-		texture.magFilter = THREE.NearestFilter;
-		texture.minFilter = THREE.NearestFilter;*/
-        	return new THREE.MeshBasicMaterial({map: texture});});
+	return a.map((e)=>{return new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("textures/"+e)});});
 }
-scene.add(new THREE.Mesh(new THREE.BoxGeometry(64,64,64),blockTex("grass")));
+function block(x,y,z,tex){
+	let g=new THREE.BoxGeometry(16,16,16);
+	g.position=new THREE.Vector3(x*16,y*16,z*16);
+	return new THREE.Mesh(g,blockTex(tex))
+}
+scene.add(block(0,0,0,"grass"));
 camera.position.z = 70;
 const tiles=[[[]]];
 function move(k,x,y,z){
@@ -70,16 +70,16 @@ function rotate(k,x,y){
 camera.rotation.y -= x);
 	});
 }
-move("w",1,0,0);
-move("s",-1,0,0);
-move("d",0,0,1);
-move("a",0,0,-1);
-move(" ",0,1,0);
-move("Shift",0,-1,0);
-rotate("ArrowUp",0,Math.PI/180);
-rotate("ArrowDown",0,-Math.PI/180);
-rotate("ArrowLeft",-Math.PI/180,0);
-rotate("ArrowRight",Math.PI/180,0);
+move("w",10,0,0);
+move("s",-10,0,0);
+move("d",0,0,10);
+move("a",0,0,-10);
+move(" ",0,10,0);
+move("Shift",0,-10,0);
+rotate("ArrowUp",0,Math.PI/18);
+rotate("ArrowDown",0,-Math.PI/18);
+rotate("ArrowLeft",-Math.PI/18,0);
+rotate("ArrowRight",Math.PI/18,0);
 (function animate() {
 	requestAnimationFrame( animate );
 	renderer.render( scene, camera );
