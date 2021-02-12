@@ -34,7 +34,7 @@ scene.add( cube );*/
 (function loadImgTexture(){
     var loader = new THREE.TextureLoader();
     loader.load("textures/double_plant_grass_top.png",function(texture){
-        var geometry = new THREE.BoxGeometry(1,1,1);
+        var geometry = new THREE.BoxGeometry();
         var material = new THREE.MeshBasicMaterial({color:0x739783,map:texture});
         mesh = new THREE.Mesh(geometry,material);
         scene.add(mesh);
