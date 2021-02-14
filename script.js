@@ -47,9 +47,9 @@ function blockTex(t){
 	return a.map((e)=>{return new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("textures/"+e)});});
 }
 function block(x,y,z,tex){
-	let g=new THREE.BoxGeometry(16,16,16);
+	let g=new THREE.Mesh(new THREE.BoxGeometry(16,16,16),blockTex(tex));
 	g.position=new THREE.Vector3(x*16,y*16,z*16);
-	return new THREE.Mesh(g,blockTex(tex))
+	return g;
 }
 class BlockUpdateEvent{
 	constructor(type,pos,data){
