@@ -75,13 +75,15 @@ class BlockUpdateEvent{
 }
 const BUQ=[];
 function processBU(){
-	Array(BUQ.length).forEach((e)=>{BUQ.shift().process();});
+	for(i of BUQ){
+		BUQ.pop().process();
+	}
 }
 camera.position.z = 70;
 const tiles=Array(16).fill(Array(16).fill(Array(12).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])));//lag Lag LaG lAg LAg LAGgy!
-for(let i in tiles){
-	for(let j in tiles[i]){
-		for(let k in tiles[i][j]){
+for(let i=0;i<tiles.length;i++){
+	for(let j=0;j<tiles[i].length;j++){
+		for(let k=0;k<tiles[i][j].length;k++){
 			if(tiles[i][j][k]){
 				BUQ.push(new BlockUpdateEvent("place",new THREE.Vector3(i,j,k),tiles[i][j][k][0]));
 			}
