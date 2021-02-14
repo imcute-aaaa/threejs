@@ -75,7 +75,7 @@ class BlockUpdateEvent{
 }
 const BUQ=[];
 function processBU(){
-	BUQ.forEach((e)=>{e.process();});
+	Array(BUQ.length).forEach((e)=>{BUQ.pop().process();});
 }
 camera.position.z = 70;
 const tiles=Array(16).fill(Array(16).fill(Array(12).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])));//lag Lag LaG lAg LAg LAGgy!
