@@ -78,11 +78,13 @@ function processBU(){
 	BUQ.forEach((e)=>{e.process();});
 }
 camera.position.z = 70;
-const tiles=[].fill([].fill([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]]));
+const tiles=Array(256).fill(Array(256).fill(Array(252).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])));
 for(let i in tiles){
 	for(let j in tiles[i]){
 		for(let k in tiles[i][j]){
-			BUQ.push(new BlockUpdateEvent("place",new THREE.Vector3(i,j,k),tiles[i][j][k][0]))
+			if(tiles[i][j][k]){
+				BUQ.push(new BlockUpdateEvent("place",new THREE.Vector3(i,j,k),tiles[i][j][k][0]));
+			}
 		}
 	}
 }
