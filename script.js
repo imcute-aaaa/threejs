@@ -75,13 +75,13 @@ class BlockUpdateEvent{
 }
 const BUQ=[];
 function processBU(){
-	for(i of BUQ){
+	for(let i of BUQ){
 		BUQ.pop().process();
 	}
 }
 camera.position.z = 70;
 {
-let a=()=>{return Array(12).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])}
+let a=()=>{return Array(12).fill(0).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])}
 let b=()=>{return Array(16).fill(0).map(a)}
 let c=()=>{return Array(16).fill(0).map(b)}
 var tiles=c();//lag Lag LaG lAg LAg LAGgy!
