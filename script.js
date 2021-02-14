@@ -84,7 +84,7 @@ camera.position.z = 70;
 let a=()=>{return Array(12).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])}
 let b=()=>{return Array(16).map(a)}
 let c=()=>{return Array(16).map(b)}
-const tiles=c();//lag Lag LaG lAg LAg LAGgy!
+var tiles=c();//lag Lag LaG lAg LAg LAGgy!
 }
 for(let i=0;i<tiles.length;i++){
 	for(let j=0;j<tiles[i].length;j++){
