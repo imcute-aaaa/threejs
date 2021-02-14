@@ -60,7 +60,7 @@ class BlockUpdateEvent{
 	process(){
 		switch(this.type){
 			case "place":
-				scene.add(block(this.pos.x,this.pos.y,this.pos.z,this.data.BT));
+				scene.add(block(this.pos.x,this.pos.y,this.pos.z,this.data));
 				break;
 			case "break":
 				for(let i=0;i<scene.children.length;i++){
@@ -78,7 +78,14 @@ function processBU(){
 	BUQ.forEach((e)=>{e.process();});
 }
 camera.position.z = 70;
-const tiles=[[[]]];
+const tiles=[].fill([].fill([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]]));
+for(let i in tiles){
+	for(let j in tiles[i]){
+		for(let k in tiles[i][j]){
+			BUQ.push(new BlockUpdateEvent("place",new THREE.Vector3(i,j,k),tiles[i][j][k][0]))
+		}
+	}
+}
 function move(k,x,y,z){
 	return addEventListener("keydown",(e)=>{
 		let c=Math.cos,s=Math.sin,Y=camera.rotation.x,P=camera.rotation.y;
