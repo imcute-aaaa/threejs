@@ -82,8 +82,8 @@ function processBU(){
 camera.position.z = 70;
 {
 let a=()=>{return Array(12).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])}
-let b=()=>{return Array(16).map(a)}
-let c=()=>{return Array(16).map(b)}
+let b=()=>{return Array(16).fill(0).map(a)}
+let c=()=>{return Array(16).fill(0).map(b)}
 var tiles=c();//lag Lag LaG lAg LAg LAGgy!
 }
 for(let i=0;i<tiles.length;i++){
