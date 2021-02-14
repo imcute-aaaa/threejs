@@ -51,7 +51,32 @@ function block(x,y,z,tex){
 	g.position=new THREE.Vector3(x*16,y*16,z*16);
 	return new THREE.Mesh(g,blockTex(tex))
 }
-scene.add(block(0,0,0,"grass"));
+class BlockUpdateEvent{
+	constructor(type,pos,data){
+		this.type=type;
+		this.data=data;
+		this.pos=pos;
+	}
+	process(){
+		switch(this.type){
+			case "place":
+				scene.add(block(this.pos.x,this.pos.y,this.pos.z,this.data.BT));
+				break;
+			case "break":
+				for(let i=0;i<scene.children.length;i++){
+					if(THREE.Vector3.div(scene.children[i].position,16).equals(this.pos)){
+						scene.children.splice(i,1);
+						break;
+					}
+				}
+				break;
+		}
+	}
+}
+const BUQ=[];
+function processBU(){
+	BUQ.forEach((e)=>{e.process();});
+}
 camera.position.z = 70;
 const tiles=[[[]]];
 function move(k,x,y,z){
@@ -85,4 +110,5 @@ rotate("ArrowRight",Math.PI/18,0);
 	renderer.render( scene, camera );
 	console.clear();
 	console.log([camera.position.x,camera.position.y,camera.position.z,camera.rotation.x,camera.rotation.y]);
+	processBU();
 })();
