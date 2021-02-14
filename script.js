@@ -78,7 +78,7 @@ function processBU(){
 	BUQ.forEach((e)=>{e.process();});
 }
 camera.position.z = 70;
-const tiles=Array(16).fill(Array(16).fill(Array(12).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])));
+const tiles=Array(16).fill(Array(16).fill(Array(12).concat([["grass",{}],["stone",{}],["stone",{}],["bedrock",{}]])));//lag Lag LaG lAg LAg LAGgy!
 for(let i in tiles){
 	for(let j in tiles[i]){
 		for(let k in tiles[i][j]){
