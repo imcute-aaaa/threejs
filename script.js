@@ -48,7 +48,7 @@ function blockTex(t){
 }
 function block(x,y,z,tex){
 	let g=new THREE.Mesh(new THREE.BoxGeometry(16,16,16),blockTex(tex));
-	g.position=new THREE.Vector3(x*16,y*16,z*16);
+	g.setPosition(new THREE.Vector3(x*16,y*16,z*16));
 	console.log(x,y,z,g.position);
 	return g;
 }
