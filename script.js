@@ -1,4 +1,4 @@
-const console={
+const console2={
 	dom(){
 		return document.getElementById("console");
 	},
@@ -125,7 +125,7 @@ rotate("ArrowRight",Math.PI/18,0);
 (function animate() {
 	requestAnimationFrame( animate );
 	renderer.render( scene, camera );
-	console.clear();
-	console.log([camera.position.x,camera.position.y,camera.position.z,camera.rotation.x,camera.rotation.y]);
+	console2.clear();
+	console2.log([camera.position.x,camera.position.y,camera.position.z,camera.rotation.x,camera.rotation.y]);
 	processBU();
 })();
