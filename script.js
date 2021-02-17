@@ -82,7 +82,7 @@ function processBU(){
 }
 camera.position.z = 70;
 {
-let b=(e)=>{return e?Array(16).fill(0).map(()=>{[e,{}]}):Array(16).fill(0).map(()=>{});}
+let b=(e)=>{return (e?(Array(16).fill(0).map(()=>{return [e,{}]})):(Array(16).fill(0).map(()=>{})));}
 let a=()=>{return Array(12).fill(0).map(b).concat([b("grass"),b("stone"),b("stone"),b("bedrock")])}
 let c=()=>{return Array(16).fill(0).map(a)}
 var tiles=c();//lag Lag LaG lAg LAg LAGgy!
