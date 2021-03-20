@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-  </head>
-  <body>
-	<p id="console"></p>
-    	<script src="https://threejs.org/build/three.js"></script>
-	<script src="blocks.js"></script>
-	<script src="script.js"></script>
-  </body>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body oncontextmenu="event.preventDefault()">
+	<p id="console" style="position:fixed;color:#888888;"></p>
+	<p id="mouse" style="position:fixed;color:#888888;">+</p>
+	<canvas id="ui" style="position:fixed;color:#888888; z-index:-1;" align="center">
+
+	</canvas>
+	<script src="https://threejs.org/build/three.js">
+
+	</script>
+	<script type="module" src="perlin3.js"></script>
+	<script src="blocks.js">
+
+	</script>
+	<script type="module" src="script.js"></script>
+	<script src="widgets.js">
+
+	</script>
+</body>
+
 </html>
